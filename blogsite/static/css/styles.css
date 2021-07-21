@@ -1,0 +1,38 @@
+body {
+     font-family: 'Tomorrow', sans-serif;
+     font-size: 18px;
+     background-color: rgb(76,68,68);
+
+}
+
+.card-body {
+    font-family: 'Tomorrow', sans-serif;
+    background-color: rgb(235,220,200);
+}
+
+#mainNav {
+    background-color: rgba(21,18,11,255);
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.nav-link {
+    color: rgb(235,220,200);
+    max-height: 10vh;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 4vh;
+}
+
+.nav-link:hover {
+      max-height: 10vh;
+      font-family: 'Tomorrow', sans-serif;
+      font-weight: bold;
+      font-size: 4vh;
+      color: rgb(208,148,71);
+}
+
+.logo_image {
+    max-height: 10vh;
+}
