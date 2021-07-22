@@ -10,13 +10,25 @@ body {
     background-color: rgb(235,220,200);
 }
 
+.card-title {
+    font-weight: bold;
+}
+
+.card-header {
+    font-size: 5vh;
+    background-color: rgba(21,18,11,255);
+    color: rgb(235,220,200);
+}
+
+.card-header:hover {
+    font-weight: bold;
+    color: rgb(208,148,71);
+}
+
 #mainNav {
     background-color: rgba(21,18,11,255);
 }
 
-.navbar-brand {
-    color: white;
-}
 
 .nav-link {
     color: rgb(235,220,200);
@@ -26,13 +38,36 @@ body {
 }
 
 .nav-link:hover {
-      max-height: 10vh;
-      font-family: 'Tomorrow', sans-serif;
-      font-weight: bold;
-      font-size: 4vh;
-      color: rgb(208,148,71);
+    font-weight: bold;
+    color: rgb(208,148,71);
 }
 
 .logo_image {
     max-height: 10vh;
+}
+
+#button {
+    background-color: rgba(21,18,11,255);
+    color: rgb(235,220,200);
+}
+
+#button:hover {
+    font-weight: bold;
+    background-color: rgb(208,148,71);
+    color: rgba(21,18,11,255);
+}
+
+#post_detail {
+    background-color: rgb(235,220,200);
+}
+
+#page-link {
+    background-color: rgba(21,18,11,255);
+    color: rgb(235,220,200);
+}
+
+#page-link:hover {
+    font-weight: bold;
+    background-color: rgb(208,148,71);
+    color: rgba(21,18,11,255);
 }
