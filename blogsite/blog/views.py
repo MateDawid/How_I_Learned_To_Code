@@ -1,5 +1,6 @@
 from django.views import generic
-from .models import Post
+from django.shortcuts import render
+from .models import Post, Keyword
 
 
 class PostList(generic.ListView):
@@ -11,3 +12,10 @@ class PostList(generic.ListView):
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+
+def keyword_view(request, keyword):
+    selected_keyword = Keyword.objects.filter(id=keyword)[0]
+    keyword_posts = Post.objects.filter(keyword=selected_keyword)
+    print(keyword_posts)
+    return render(request, "keyword.html", {"keyword_name":selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})
