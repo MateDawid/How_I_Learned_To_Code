@@ -12,5 +12,10 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
 
 
-admin.site.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
+
+
+admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Post, PostAdmin)
