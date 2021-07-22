@@ -71,3 +71,7 @@ body {
     background-color: rgb(208,148,71);
     color: rgba(21,18,11,255);
 }
+
+#keyword_header {
+    color: rgb(208,148,71);
+}
