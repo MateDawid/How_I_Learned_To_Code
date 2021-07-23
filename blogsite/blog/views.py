@@ -14,7 +14,7 @@ class PostDetail(generic.DetailView):
     template_name = 'post_detail.html'
 
 
-def keyword_view(request, keyword):
+def keyword_posts_view(request, keyword):
     selected_keyword = Keyword.objects.filter(id=keyword)[0]
     keyword_posts = Post.objects.filter(keyword=selected_keyword)
-    return render(request, "keyword.html", {"keyword_name":selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})
+    return render(request, "keyword_posts.html", {"keyword_name":selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})

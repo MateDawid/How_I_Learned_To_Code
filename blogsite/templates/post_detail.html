@@ -8,6 +8,7 @@
         <div class="card-body">
           <p class=" text-muted">{{ post.created_on }}</p>
           <p class="card-text end">{{ object.content | safe }}</p>
+          <a href="{% url 'keyword' post.keyword.id  %}" class="btn btn-dark float-left" id="button">{{ post.keyword }}</a>
         </div>
       </div>
     </div>
