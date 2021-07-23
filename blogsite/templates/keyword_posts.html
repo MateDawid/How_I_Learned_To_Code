@@ -4,8 +4,7 @@
 
 
 <div class="container">
-    <div class="row">
-
+    <div class="row justify-content-center">
         <div class="col-md-8 mt-3 left">
             <div class="card mb-4 bg-dark">
                 <h1 class="card-header" id="keyword_header">Wszystkie posty z tematu: {{ keyword_name }}</h1>
@@ -34,7 +33,6 @@
             </div>
             {% endif %}
         </div>
-        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
 </div>
 {% endblock %}

@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 mt-3 left top">
+  <div class="row justify-content-center">
+    <div class="col-md-12 mt-3 center top">
       <div class="card mb-4 bg-dark" id="post_detail">
         <h1 class="card-header">{% block title %} {{ object.title }} {% endblock title %}</h1>
         <div class="card-body">
@@ -12,7 +12,6 @@
         </div>
       </div>
     </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
   </div>
 </div>
 
