@@ -1,5 +1,6 @@
 from django.views import generic
 from django.shortcuts import render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post, Keyword
 
 
@@ -14,7 +15,23 @@ class PostDetail(generic.DetailView):
     template_name = 'post_detail.html'
 
 
+# class KeywordList(generic.ListView):
+#     queryset = Keyword.objects.order_by('name')
+#     template_name = 'keyword_list.html'
+
+
 def keyword_posts_view(request, keyword):
     selected_keyword = Keyword.objects.filter(id=keyword)[0]
-    keyword_posts = Post.objects.filter(keyword=selected_keyword)
-    return render(request, "keyword_posts.html", {"keyword_name":selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})
+    object_list = Post.objects.filter(keyword=selected_keyword).order_by('-created_on')
+    paginator = Paginator(object_list, 10)
+    page = request.GET.get('page')
+    try:
+        keyword_posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        keyword_posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        keyword_posts = paginator.page(paginator.num_pages)
+
+    return render(request, "keyword_posts.html", {"keyword_name": selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})

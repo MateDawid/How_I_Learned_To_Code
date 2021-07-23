@@ -3,14 +3,14 @@
 
 <div class="container">
     <div class="row">
-        <!-- Blog Entries Column -->
         <div class="col-md-8 mt-3 left">
             {% for post in post_list %}
             <div class="card mb-4 bg-dark">
                 <h5 class="card-header">{{ post.title }}</h5>
                 <div class="card-body">
                     <a href="{% url 'keyword' post.keyword.id  %}" class="btn btn-dark float-left" id="button">{{ post.keyword }}</a>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-dark float-right" id="button">Czytaj &rarr;</a>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-dark float-right" id="button">Czytaj
+                        &rarr;</a>
                 </div>
             </div>
             {% endfor %}
@@ -18,10 +18,12 @@
             <nav aria-label="Page navigation conatiner">
                 <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
-                    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-dark" id="page-link">&laquo;</a></li>
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-dark"
+                           id="page-link">&laquo;</a></li>
                     {% endif %}
                     {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-dark" id="page-link">&raquo;</a></li>
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-dark" id="page-link">&raquo;</a>
+                    </li>
                     {% endif %}
                 </ul>
             </nav>
@@ -30,5 +32,4 @@
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
 </div>
-
-    {%endblock%}
+{% endblock %}
