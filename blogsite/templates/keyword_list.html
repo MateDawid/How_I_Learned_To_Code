@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            <div class="card mb-4 bg-dark">
+                <h1 class="card-header" id="keyword_header">Lista tematów:</h1>
+            </div>
+            {% for keyword in keyword_list %}
+                <a href="{% url 'keyword' keyword.id  %}" class="btn btn-dark p-4" id="keyword_button">{{ keyword.name }}</a>
+            {% endfor %}
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+</div>
+{% endblock %}

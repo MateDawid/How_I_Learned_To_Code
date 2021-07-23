@@ -15,9 +15,9 @@ class PostDetail(generic.DetailView):
     template_name = 'post_detail.html'
 
 
-# class KeywordList(generic.ListView):
-#     queryset = Keyword.objects.order_by('name')
-#     template_name = 'keyword_list.html'
+class KeywordList(generic.ListView):
+    queryset = Keyword.objects.order_by('name')
+    template_name = 'keyword_list.html'
 
 
 def keyword_posts_view(request, keyword):
