@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7 mt-3 center top">
+      <div class="card mb-4 bg-dark" id="post_detail">
+        <h1 class="card-header">Wyszukaj posty</h1>
+        <div class="card-body" id="form_card">
+          <form method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <div id="form_label">
+                            {{  field.label_tag  }}
+                        </div>
+                        <div id="form_input">
+                            {{  field  }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-dark float-right" id="button">Szukaj</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+card mb-4 bg-dark

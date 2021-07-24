@@ -1,7 +1,8 @@
 from django.views import generic
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post, Keyword
+from .forms import SearchForm
 
 
 class PostList(generic.ListView):
@@ -35,3 +36,14 @@ def keyword_posts_view(request, keyword):
         keyword_posts = paginator.page(paginator.num_pages)
 
     return render(request, "keyword_posts.html", {"keyword_name": selected_keyword, "keyword": keyword, 'keyword_posts': keyword_posts})
+
+
+def search_form_view(request):
+    form = SearchForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            request.session['search_paramethers'] = request.POST
+            # return redirect(search_result_view)
+    return render(request, "search_form.html", {"form": form})
+
+

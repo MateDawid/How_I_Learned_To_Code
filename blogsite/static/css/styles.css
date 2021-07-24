@@ -81,11 +81,19 @@ body {
     font-size: 8vh;
     background-color: rgba(21,18,11,255);
     color: rgb(235,220,200);
-    min_width: 100vw;
 }
 
 #keyword_button:hover {
     font-weight: bold;
     background-color: rgb(208,148,71);
     color: rgba(21,18,11,255);
+}
+
+#form_input{
+   text-align: center;
+}
+
+.form_field {
+    min-width: 35vw;
+    max-width: 80vw;
 }
