@@ -1,5 +1,6 @@
 from django.views import generic
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post, Keyword
 from .forms import SearchForm
@@ -43,7 +44,40 @@ def search_form_view(request):
     if request.method == 'POST':
         if form.is_valid():
             request.session['search_paramethers'] = request.POST
-            # return redirect(search_result_view)
+            return redirect(results_view)
     return render(request, "search_form.html", {"form": form})
+
+
+def results_view(request):
+    form_input = request.session.get('search_paramethers')
+    content = form_input["content"]
+    keyword = form_input["keyword"]
+
+    if keyword == "-":
+        found_posts = Post.objects.filter(status=1).filter(
+            Q(title__icontains=content) | Q(content__icontains=content)).order_by('-created_on')
+
+    else:
+        keyword_id = Keyword.objects.filter(name=keyword)[0].id
+        found_posts = Post.objects.filter(status=1).filter(keyword=keyword_id).filter(
+            Q(title__icontains=content) | Q(content__icontains=content)).order_by('-created_on')
+
+    if len(found_posts) == 0:
+        return render(request, 'no_posts.html')
+
+    paginator = Paginator(found_posts, 10)
+    page = request.GET.get('page')
+    try:
+        paginated_posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        paginated_posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        paginated_posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'results.html', {"found_posts": paginated_posts})
+
+
 
 

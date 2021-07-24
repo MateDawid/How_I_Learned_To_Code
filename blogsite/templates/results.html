@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-3 left">
+            <div class="card mb-4 bg-dark">
+                <h1 class="card-header" id="keyword_header">Znalezione posty:</h1>
+            </div>
+            {% for post in found_posts %}
+            <div class="card mb-4 bg-dark">
+                <h5 class="card-header">{{ post.title }}</h5>
+                <div class="card-body">
+                    <a href="{% url 'keyword' post.keyword.id  %}" class="btn btn-dark float-left" id="button">{{ post.keyword }}</a>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-dark float-right" id="button">Czytaj
+                        &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% if found_posts.has_other_pages %}
+            <nav aria-label="Page navigation conatiner">
+              <ul class="pagination justify-content-center">
+                {% if found_posts.has_previous %}
+                <li><a href="?page={{ found_posts.previous_page_number }}" class="btn btn-dark" id="page-link">&laquo;</a></li>
+                {% endif %}
+                {% if found_posts.has_next %}
+                <li><a href="?page={{ found_posts.next_page_number }}" class="btn btn-dark" id="page-link">&raquo;</a></li>
+               {% endif %}
+              </ul>
+              </nav>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
