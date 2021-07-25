@@ -1,2 +1,2 @@
 release: python blogsite/manage.py migrate
-web: gunicorn blogsite.wsgi --log-file -
+web: gunicorn blogsite.blogsite.wsgi --log-file -
