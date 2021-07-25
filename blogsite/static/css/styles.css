@@ -97,3 +97,12 @@ body {
     min-width: 35vw;
     max-width: 80vw;
 }
+
+@media (max-width: 640px) {
+
+    .nav-link {
+        font-size: 2vh;
+    }
+
+}
+
