@@ -103,7 +103,12 @@ body {
     color: rgb(235,220,200);
 }
 
-#footer_text:hover {
+#footer_link {
+    padding-top:3vh;
+    color: rgb(235,220,200);
+}
+
+#footer_text:link {
     color: rgb(208,148,71);
 }
 
