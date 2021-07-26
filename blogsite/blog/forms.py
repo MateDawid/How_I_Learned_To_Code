@@ -12,8 +12,3 @@ class SearchForm(forms.Form):
         keyword_list = [("-", "-")]
         keyword_list.extend([item for item in keywords])
         self.fields['keyword'].choices = keyword_list
-
-    def clean_content(self):
-        content = self.cleaned_data['content']
-        if len(content) < 3:
-            raise forms.ValidationError("Podaj więcej szczegółów!")
