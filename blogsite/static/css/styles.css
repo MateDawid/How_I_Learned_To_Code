@@ -98,6 +98,15 @@ body {
     max-width: 80vw;
 }
 
+#footer_text {
+    padding-top:3vh;
+    color: rgb(235,220,200);
+}
+
+#footer_text:hover {
+    color: rgb(208,148,71);
+}
+
 @media (max-width: 640px) {
 
     .nav-link {
