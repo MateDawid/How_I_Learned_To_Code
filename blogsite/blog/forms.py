@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Keyword
+from .models import Keyword
 
 
 class SearchForm(forms.Form):
@@ -8,7 +8,7 @@ class SearchForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        keywords = Keyword.objects.all().values_list('name', 'name')
+        keywords = Keyword.objects.all().values_list('name', 'name').order_by('name')
         keyword_list = [("-", "-")]
-        keyword_list.extend([item for item in keywords])
+        keyword_list.extend(keywords)
         self.fields['keyword'].choices = keyword_list
